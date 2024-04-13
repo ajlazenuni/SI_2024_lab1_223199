@@ -1,0 +1,68 @@
+mkdir SI_2024_lab1_223199  
+#pravam datoteka
+ cd SI_2024_lab1_223199
+#vleguvam vo datotekata
+git init
+#inicijaliziram lokalen git repozitorium
+git remote add origin git@github.com:ajlazenuni/SI_2024_lab1_223199.git
+#se povrzuvam so remote repozitoriumot
+nano README.md
+#pravam file 
+git add README.md
+#go stavam na stage
+git commit -m "Initial commit" 
+#go pravam prviot commit
+git add --all
+#otkako gi prezemav java fajlovite treba I niv da gi stavam na stage
+git commit -m "Add starter code"
+#pravam commit I na ovie file-ovi
+git branch -M master
+#preimenuvanje na grankata 
+git push -u origin master
+#prviot push od lokalno na remote repo
+git branch bug1
+#pravam branch bug1
+git branch bug2
+# pravam branch bug2
+git checkout bug1
+#se prefrlam na bug1
+nano SILab1_1.java
+#gi pravam izmenite navedeni vo vezhbata
+git commit -m "Fix wrong condition in filterOddLengthStrings" SILab1_1.java
+#pravam commit
+git checkout bug2
+#se prefrlam na grankata bug2
+nano SILab1_2.java
+#pravam izmeni I vo ovoj file
+git commit -m "Fix wrong condition in makeBigStringFrom" SILab1_2.java
+#nov commit 
+git checkout bug1
+nano SILab1Main.java
+git commit -m "Call method filterOddLengthStrings in main class" SILab1Main.java
+git checkout bug2
+nano SILab1Main.java
+git commit -m "Call method makeBigStringFrom in main class" SILab1Main.java
+git push --all
+#pravam push na remote repozitoriumot
+git checkout master
+git merge bug1
+#spojuvanje na Fast Forward nachin
+git push --all
+git checkout bug2
+git rebase master
+#se javuva konfilkt poradi toa shto istiot fajl ima razlichni promeni, se spravuvam so konfliktot
+nano SILab1Main.java
+git add SILab1Main.java
+git rebase --continue
+#so git rebase --continue go zavrshuvam procesot na rebase
+git checkout master
+git merge bug2
+#gi spojuvam grankite
+git push origin bug2 --force
+#pravam push na remote repo
+nano logs.txt
+nano 223199.txt
+git add --all
+git commit -m "Final commit"
+git push --all
+
